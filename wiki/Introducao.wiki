@@ -1,0 +1,19 @@
+= Introdução =
+
+== TV Digital ==
+
+ # O que é a TV Digital?
+ # Padrões existentes: DVB, ATSC, ISDB
+
+== Transmissão dos Dados ==
+ # Cada canal tem 19Mbits (6MHz)
+ #Suficiente para:
+   # 1 canal HD, 1 canal standard, 1 movel e dados.
+   # 4 canais standards, 1 movel e dados.
+ # Formato dos dados: MPEG Transport Stream
+
+== Transport Stream (TS) ==
+ # Um protocolo de comunicação para áudio, vídeo e dados.
+ # ISO/IEC standard 13818-1
+ # Encapsula  todos os dados em um único “arquivo”
+ # Formado por pacotes de 188 bytes.
