@@ -1,10 +1,24 @@
 #labels Featured
-= Introdução =
+= TV Digital =
 
-== TV Digital ==
+Ultimamente o assunto da televisão digital está se tornando muito comum. No mundo vários países estão em transição para a televisão digital. A previsão é que até o final de 2009 dez paises (Luxemburgo, Holanda, Finlandia, Andorra, Suiça, Noruegua, Suécia, Belgica, Alemanha e EUA) tenham completado o processo de desligamento do sinal analógico de televisão.
 
- # O que é a TV Digital?
- # Padrões existentes: DVB, ATSC, ISDB
+== No Brasil ==
+
+A televisão digital está chegando aos lares brasileiros. A transmissão começou no dia 2 de dezembro de 2007 em São Paulo. Atualmente está em mais de dez cidades, entre elas, Rio de Janeiro, Beli Horizonte, Goiânia, Curitiba, Porto Alegre, Bahia, Campinas e Cuiabá.
+
+== Padrões ==
+
+O mundo está dominado por três padrões de televisão digital terrestre:
+ * *DVB-T*: Padrão europeu.
+ * *ATSC*: Padrão Americano.
+ * *ISDB-T*: Padrão Japones.
+
+
+----
+More info: http://www.dtv.gov
+More info: http://www.dtv.org.br
+
 
 == Transmissão dos Dados ==
  # Cada canal tem 19Mbits (6MHz)
