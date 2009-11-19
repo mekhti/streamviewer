@@ -37,7 +37,10 @@ CFLAGS = -Wall \
          -I/usr/include/libglademm-2.4 \
          -I/usr/lib/libglademm-2.4/include \
          -I/usr/include/libglade-2.0 \
-         -I/usr/include/libxml2
+         -I/usr/include/libxml2 \
+         -I/usr/include/giomm-2.4 \
+         -I/usr/lib/giomm-2.4/include \
+         -I/usr/include/gtk-unix-print-2.0
 
 LIBS   = -lglademm-2.4 \
          -lgtkmm-2.4 \
@@ -60,7 +63,12 @@ LIBS   = -lglademm-2.4 \
          -lgobject-2.0 \
          -lgmodule-2.0 \
          -ldl \
-         -lglib-2.0
+         -lglib-2.0 \
+         -lgiomm-2.4 \
+         -lpangoft2-1.0 \
+         -lgio-2.0 \
+         -lfreetype \
+         -lfontconfig
 
 SOURCES = main.cc \
           gui/MainWindow.cc
