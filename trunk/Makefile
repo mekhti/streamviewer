@@ -7,9 +7,9 @@ RM  = rm -f
 
 ROOT_PATH    = .
 BINARY_PATH  = $(ROOT_PATH)/bin
+DEBUG_PATH  = $(ROOT_PATH)/debug
 INCLUDE_PATH = $(ROOT_PATH)/include
 LIBRARY_PATH = $(ROOT_PATH)/lib
-OBJECT_PATH  = $(ROOT_PATH)/obj
 SOURCE_PATH  = $(ROOT_PATH)/src
 
 ##################   C   F l a g s   &   L i b r a r i e s   ##################
@@ -86,7 +86,7 @@ SOURCES = main.cc \
 ##############################   O b j e c t s   ##############################
 
 OBJECTS = $(addsuffix .o, $(basename $(SOURCES)))
-DEBUG_OBJECTS = $(addprefix $(OBJECT_PATH)/, $(OBJECTS))
+DEBUG_OBJECTS = $(addprefix $(DEBUG_PATH)/, $(OBJECTS))
 
 ###############################################################################
 ##                               T a r g e t s                               ##
@@ -106,15 +106,15 @@ header:
 $(EXECUTABLE): $(DEBUG_OBJECTS)
 	@echo "Building $(EXECUTABLE)..."
 	@echo "----------------------------------------------------------------"
-	$(CXX) $(DEBUG_OBJECTS) $(LIBS) -o $(BINARY_PATH)/streamviewer
+	$(CXX) -g3 $(DEBUG_OBJECTS) $(LIBS) -o $(BINARY_PATH)/streamviewer
 	@echo ""
 	@echo "Done."
 	@echo ""
 
-$(OBJECT_PATH)/%.o: $(SOURCE_PATH)/%.cc
+$(DEBUG_PATH)/%.o: $(SOURCE_PATH)/%.cc
 	@echo "Compiling $<..."
 	@echo "----------------------------------------------------------------"
-	$(CXX) $(CFLAGS) -I$(INCLUDE_PATH) $< -c -o $@
+	$(CXX) -g3 $(CFLAGS) -I$(INCLUDE_PATH) $< -c -o $@
 	@echo ""
 
 clean: header
