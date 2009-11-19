@@ -1,5 +1,9 @@
+#############################   C o m m a n d s   #############################
+
 CXX = g++
 RM  = rm -f
+
+################################   P a t h s   ################################
 
 ROOT_PATH    = .
 BINARY_PATH  = $(ROOT_PATH)/bin
@@ -7,6 +11,8 @@ INCLUDE_PATH = $(ROOT_PATH)/include
 LIBRARY_PATH = $(ROOT_PATH)/lib
 OBJECT_PATH  = $(ROOT_PATH)/obj
 SOURCE_PATH  = $(ROOT_PATH)/src
+
+##################   C   F l a g s   &   L i b r a r i e s   ##################
 
 # pkg-config --cflags --libs gtkmm-2.4 libglademm-2.4
 
@@ -40,7 +46,9 @@ CFLAGS = -Wall \
          -I/usr/include/libxml2 \
          -I/usr/include/giomm-2.4 \
          -I/usr/lib/giomm-2.4/include \
-         -I/usr/include/gtk-unix-print-2.0
+         -I/usr/include/gtk-unix-print-2.0 \
+         -I/usr/lib/pangomm-1.4/include \
+         -I/usr/include/libpng12
 
 LIBS   = -lglademm-2.4 \
          -lgtkmm-2.4 \
@@ -70,13 +78,19 @@ LIBS   = -lglademm-2.4 \
          -lfreetype \
          -lfontconfig
 
+##############################   S o u r c e s   ##############################
+
 SOURCES = main.cc \
           gui/MainWindow.cc
 
-OBJECTS = $(addsuffix .o, $(basename $(SOURCES)))
+##############################   O b j e c t s   ##############################
 
-SOURCES_LIST = $(addprefix $(SOURCE_PATH)/, $(SOURCES))
-OBJECTS_LIST = $(addprefix $(OBJECT_PATH)/, $(OBJECTS))
+OBJECTS = $(addsuffix .o, $(basename $(SOURCES)))
+DEBUG_OBJECTS = $(addprefix $(OBJECT_PATH)/, $(OBJECTS))
+
+###############################################################################
+##                               T a r g e t s                               ##
+###############################################################################
 
 EXECUTABLE = streamviewer
 
@@ -89,10 +103,10 @@ header:
 	@echo "================================================================"
 	@echo ""
 
-$(EXECUTABLE): $(OBJECTS_LIST)
+$(EXECUTABLE): $(DEBUG_OBJECTS)
 	@echo "Building $(EXECUTABLE)..."
 	@echo "----------------------------------------------------------------"
-	$(CXX) $(OBJECTS_LIST) $(LIBS) -o $(BINARY_PATH)/streamviewer
+	$(CXX) $(DEBUG_OBJECTS) $(LIBS) -o $(BINARY_PATH)/streamviewer
 	@echo ""
 	@echo "Done."
 	@echo ""
@@ -106,7 +120,7 @@ $(OBJECT_PATH)/%.o: $(SOURCE_PATH)/%.cc
 clean: header
 	@echo "Clean objects and executable..."
 	@echo "----------------------------------------------------------------"
-	-$(RM) $(OBJECTS_LIST) $(BINARY_PATH)/$(EXECUTABLE)
+	-$(RM) $(DEBUG_OBJECTS) $(BINARY_PATH)/$(EXECUTABLE)
 	@echo ""
 	@echo "Done."
 	@echo ""
