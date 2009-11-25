@@ -14,6 +14,7 @@ O mundo está dominado por três padrões de televisão digital terrestre:
  * *ATSC*: Padrão Americano.
  * *ISDB-T*: Padrão Japones.
 
+[http://streamviewer.googlecode.com/svn/resources/images/digitaltvdistribution.png]
 
 ----
 More info: http://www.dtv.gov
