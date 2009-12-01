@@ -3,31 +3,42 @@
 /*    Copyright © 2009 - Paulo Flabiano Smorigo - Under GNU GPL v2 License    */
 /* -------------------------------------------------------------------------- */
 /**
- * @file    MainWindow.cc
- * @brief   The methods of the main class of the application.
+ * @file    Decoder.h
+ * @brief   The header of the decoder class.
  * @author  Paulo Flabiano Smorigo <pfsmorigo@gmail.com>
- * @date    Nov 16, 2009
+ * @date    Nov 23, 2009
  *
  * $Id$
  * $URL$
  *
  */
 
-#include "MainWindow.h"
-#include <iostream>
+#ifndef DECODER_H_
+#define DECODER_H_
 
-using namespace std;
-
-MainWindow::MainWindow(BaseObjectType* base_object, const Glib::RefPtr<Gnome::Glade::Xml>& glade_xml) :	Gtk::Window(base_object)
+class Decoder
 {
+public:
+	/**
+	 * @brief The constructor.
+	 */
+	Decoder();
 
-}
+	/**
+	 * @brief The destructor.
+	 */
+	virtual ~Decoder();
 
-MainWindow::~MainWindow()
-{
-}
+private:
+	/**
+	 * @brief TBD
+	 */
+	int packetNumber;
 
-void MainWindow::on_btnOpen_clicked()
-{
-	cout << "Clicked" << endl;
-}
+	/**
+	 * @brief TBD
+	 */
+	int pid;
+};
+
+#endif /* DECODER_H_ */

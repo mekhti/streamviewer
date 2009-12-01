@@ -1,3 +1,17 @@
+##           StreamViewer - A free and open transport stream viewer           ##
+## ========================================================================== ##
+##    Copyright © 2009 - Paulo Flabiano Smorigo - Under GNU GPL v2 License    ##
+## -------------------------------------------------------------------------- ##
+##
+## @file    Makefile
+## @brief   The project makefile.
+## @author  Paulo Flabiano Smorigo <pfsmorigo@gmail.com>
+## @date    Nov 16, 2009
+##
+## $Id$
+## $URL$
+##
+ 
 #############################   C o m m a n d s   #############################
 
 CXX = g++
@@ -81,6 +95,7 @@ LIBS   = -lglademm-2.4 \
 ##############################   S o u r c e s   ##############################
 
 SOURCES = main.cc \
+          Decoder.cc \
           gui/MainWindow.cc
 
 ##############################   O b j e c t s   ##############################
@@ -98,9 +113,10 @@ all: header $(EXECUTABLE)
 
 header:
 	@echo ""
-	@echo "================================================================"
-	@echo "    StreamViewer - A free and open transport stream analyser    "
-	@echo "================================================================"
+	@echo "           StreamViewer - A free and open transport stream viewer          "
+	@echo " =========================================================================="
+	@echo "    Copyright © 2009 - Paulo Flabiano Smorigo - Under GNU GPL v2 License   "
+	@echo " --------------------------------------------------------------------------"
 	@echo ""
 
 $(EXECUTABLE): $(DEBUG_OBJECTS)

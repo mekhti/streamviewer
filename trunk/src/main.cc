@@ -1,12 +1,22 @@
-/*
- * main.cpp
+/*           StreamViewer - A free and open transport stream viewer           */
+/* ========================================================================== */
+/*    Copyright © 2009 - Paulo Flabiano Smorigo - Under GNU GPL v2 License    */
+/* -------------------------------------------------------------------------- */
+/**
+ * @file    main.cc
+ * @brief   The main function.
+ * @author  Paulo Flabiano Smorigo <pfsmorigo@gmail.com>
+ * @date    Nov 16, 2009
  *
- *  Created on: Nov 16, 2009
- *      Author: pfsmorigo
+ * $Id$
+ * $URL$
+ *
  */
 
+#include <iostream>
 #include <gtkmm.h>
 #include <libglademm/xml.h>
+#include "Decoder.h"
 #include "gui/MainWindow.h"
 #include "global.h"
 
@@ -14,8 +24,6 @@ using namespace std;
 
 int main (int argc, char *argv[])
 {
-//	applicationPath = Glib::get
-
 	Glib::RefPtr<Gnome::Glade::Xml> rptGldWindow;
 	Gtk::Main kit(argc, argv);
 
@@ -26,9 +34,10 @@ int main (int argc, char *argv[])
 	MainWindow* winMain;
 	rptGldWindow->get_widget_derived("winMain", winMain);
 
+	Decoder decoder;
+
 	// start the event loop
-	Gtk::Main::run(*winMain);
+	//Gtk::Main::run(*winMain);
 
 	return 0;
 }
-
