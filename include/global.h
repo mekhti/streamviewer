@@ -1,8 +1,17 @@
-/*
- * global.h
+/*           StreamViewer - A free and open transport stream viewer           */
+/* ========================================================================== */
+/*    Copyright © 2009 - Paulo Flabiano Smorigo - Under GNU GPL v2 License    */
+/* -------------------------------------------------------------------------- */
+/**
+ * @file    global.h
+ * @brief   The header containing informations used by all
+ *          the application.
+ * @author  Paulo Flabiano Smorigo <pfsmorigo@gmail.com>
+ * @date    Nov 16, 2009
  *
- *  Created on: Nov 16, 2009
- *      Author: pfsmorigo
+ * $Id$
+ * $URL$
+ *
  */
 
 #ifndef GLOBAL_H_
