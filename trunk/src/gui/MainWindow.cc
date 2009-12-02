@@ -20,7 +20,22 @@ using namespace std;
 
 MainWindow::MainWindow(BaseObjectType* base_object, const Glib::RefPtr<Gnome::Glade::Xml>& glade_xml) :	Gtk::Window(base_object)
 {
+	/* Create the Tree model. */
+	refLstPacketList = Gtk::ListStore::create(mclPacketList);
+	tvwPacketList.set_model(refLstPacketList);
 
+	/* Fill the TreeView's model */
+	Gtk::TreeModel::Row row = *(refLstPacketList->append());
+	row[mclPacketList.tmcNumber] = 1;
+	row[mclPacketList.tmcPID] = 15;
+
+	row = *(refLstPacketList->append());
+	row[mclPacketList.tmcNumber] = 2;
+	row[mclPacketList.tmcPID] = 40;
+
+	/* Add the TreeView's view columns. */
+	tvwPacketList.append_column("Number", mclPacketList.tmcNumber);
+	tvwPacketList.append_column("PID", mclPacketList.tmcPID);
 }
 
 MainWindow::~MainWindow()
@@ -29,5 +44,5 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_btnOpen_clicked()
 {
-	cout << "Clicked" << endl;
+	cout<<"Clicked"<<endl;
 }

@@ -38,6 +38,35 @@ protected:
 	 */
 	void on_btnOpen_clicked();
 
+private:
+	class ModelColumnsPacketList: public Gtk::TreeModel::ColumnRecord
+	{
+	public:
+
+		ModelColumnsPacketList()
+		{
+			add(tmcNumber);
+			add(tmcPID);
+		}
+
+		Gtk::TreeModelColumn<unsigned int> tmcNumber;
+		Gtk::TreeModelColumn<unsigned int> tmcPID;
+	};
+
+	/**
+	 * @brief TBD
+	 */
+	ModelColumnsPacketList mclPacketList;
+
+	/**
+	 * @brief TBD
+	 */
+	Glib::RefPtr<Gtk::ListStore> refLstPacketList;
+
+	/**
+	 * @brief TBD
+	 */
+	Gtk::TreeView tvwPacketList;
 };
 
 #endif // MAINWINDOW_H

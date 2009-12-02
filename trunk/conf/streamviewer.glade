@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE glade-interface SYSTEM "glade-2.0.dtd">
-<!--Generated with glade3 3.4.5 on Wed Nov 18 23:59:36 2009 -->
+<!--Generated with glade3 3.4.5 on Tue Dec  1 22:18:18 2009 -->
 <glade-interface>
   <widget class="GtkWindow" id="winMain">
     <property name="title" translatable="yes">StreamViewer</property>
@@ -170,6 +170,7 @@
               </widget>
               <packing>
                 <property name="expand">False</property>
+                <property name="homogeneous">False</property>
               </packing>
             </child>
             <child>
@@ -210,7 +211,7 @@
                 <property name="can_focus">True</property>
                 <property name="hscrollbar_policy">GTK_POLICY_NEVER</property>
                 <child>
-                  <widget class="GtkTreeView" id="tvwPackets">
+                  <widget class="GtkTreeView" id="tvwPacketList">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="headers_clickable">True</property>
@@ -390,7 +391,7 @@ This General Public License does not permit incorporating your program into prop
     <property name="authors">Paulo Flabiano Smorigo</property>
     <property name="documenters">Paulo Flabiano Smorigo</property>
     <property name="artists">Paulo Flabiano Smorigo</property>
-    <property name="logo">logo.png</property>
+    <property name="logo">../images/logo.png</property>
     <property name="wrap_license">True</property>
     <child internal-child="vbox">
       <widget class="GtkVBox" id="boxDialog">

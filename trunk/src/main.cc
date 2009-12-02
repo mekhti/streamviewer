@@ -34,10 +34,9 @@ int main (int argc, char *argv[])
 	MainWindow* winMain;
 	rptGldWindow->get_widget_derived("winMain", winMain);
 
-	Decoder decoder;
+	//Decoder decoder;
 
-	// start the event loop
-	//Gtk::Main::run(*winMain);
+	Gtk::Main::run(*winMain);
 
 	return 0;
 }
