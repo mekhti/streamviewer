@@ -17,6 +17,17 @@
 #ifndef GLOBAL_H_
 #define GLOBAL_H_
 
-std::string applicationPath;
+#include <gtkmm.h>
+#include <libglademm.h>
+
+/**
+ * @brief The application path.
+ */
+extern std::string applicationPath;
+
+/**
+ * @brief The reference pointer to the glade xml configuration.
+ */
+extern Glib::RefPtr<Gnome::Glade::Xml> rptGlade;
 
 #endif /* GLOBAL_H_ */
