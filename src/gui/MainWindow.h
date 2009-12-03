@@ -16,8 +16,8 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <libglademm.h>
 #include <gtkmm.h>
+#include <libglademm.h>
 
 class MainWindow: public Gtk::Window
 {
@@ -54,19 +54,19 @@ private:
 	};
 
 	/**
-	 * @brief TBD
+	 * @brief The packet list column model.
 	 */
 	ModelColumnsPacketList mclPacketList;
 
 	/**
-	 * @brief TBD
+	 * @brief The packet list list store.
 	 */
 	Glib::RefPtr<Gtk::ListStore> refLstPacketList;
 
 	/**
-	 * @brief TBD
+	 * @brief The packet list tree view.
 	 */
-	Gtk::TreeView tvwPacketList;
+	Gtk::TreeView *tvwPacketList;
 };
 
 #endif // MAINWINDOW_H

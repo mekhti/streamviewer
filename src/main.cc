@@ -13,28 +13,20 @@
  *
  */
 
+#include "main.h"
 #include <iostream>
-#include <gtkmm.h>
-#include <libglademm/xml.h>
-#include "Decoder.h"
-#include "gui/MainWindow.h"
-#include "global.h"
 
 using namespace std;
 
-int main (int argc, char *argv[])
+int main(int argc, char *argv[])
 {
-	Glib::RefPtr<Gnome::Glade::Xml> rptGldWindow;
 	Gtk::Main kit(argc, argv);
 
-	// load the interface
-	rptGldWindow = Gnome::Glade::Xml::create("../conf/streamviewer.glade");
+	/* Load the interface. */
+	rptGlade = Gnome::Glade::Xml::create("../conf/streamviewer.glade");
 
-	// Get the main window
-	MainWindow* winMain;
-	rptGldWindow->get_widget_derived("winMain", winMain);
-
-	//Decoder decoder;
+	/* Get the main window. */
+	rptGlade->get_widget_derived("winMain", winMain);
 
 	Gtk::Main::run(*winMain);
 

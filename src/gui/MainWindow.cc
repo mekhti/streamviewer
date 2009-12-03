@@ -14,17 +14,21 @@
  */
 
 #include "MainWindow.h"
+#include "global.h"
 #include <iostream>
+#include <gtkmm.h>
 
 using namespace std;
 
 MainWindow::MainWindow(BaseObjectType* base_object, const Glib::RefPtr<Gnome::Glade::Xml>& glade_xml) :	Gtk::Window(base_object)
 {
+	rptGlade->get_widget("tvwPacketList", tvwPacketList);
+
 	/* Create the Tree model. */
 	refLstPacketList = Gtk::ListStore::create(mclPacketList);
-	tvwPacketList.set_model(refLstPacketList);
+	tvwPacketList->set_model(refLstPacketList);
 
-	/* Fill the TreeView's model */
+	/* Fill the TreeView's model. */
 	Gtk::TreeModel::Row row = *(refLstPacketList->append());
 	row[mclPacketList.tmcNumber] = 1;
 	row[mclPacketList.tmcPID] = 15;
@@ -34,8 +38,8 @@ MainWindow::MainWindow(BaseObjectType* base_object, const Glib::RefPtr<Gnome::Gl
 	row[mclPacketList.tmcPID] = 40;
 
 	/* Add the TreeView's view columns. */
-	tvwPacketList.append_column("Number", mclPacketList.tmcNumber);
-	tvwPacketList.append_column("PID", mclPacketList.tmcPID);
+	tvwPacketList->append_column("Number", mclPacketList.tmcNumber);
+	tvwPacketList->append_column("PID", mclPacketList.tmcPID);
 }
 
 MainWindow::~MainWindow()
