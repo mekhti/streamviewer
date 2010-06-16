@@ -48,7 +48,7 @@ DEBUG_OBJECTS = $(addprefix $(DEBUG_PATH)/, $(OBJECTS))
 
 EXECUTABLE = streamviewer
 
-all: header $(EXECUTABLE)
+all: header clean $(EXECUTABLE)
 
 header:
 	@echo ""

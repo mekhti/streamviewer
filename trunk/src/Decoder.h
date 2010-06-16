@@ -16,6 +16,11 @@
 #ifndef DECODER_H_
 #define DECODER_H_
 
+#include <string>
+#include <list>
+
+using namespace std;
+
 class Decoder
 {
 public:
@@ -29,16 +34,41 @@ public:
 	 */
 	virtual ~Decoder();
 
+	/**
+	 * @brief TBD
+	 */
+	void SetFile(string filename);
+
+	/**
+	 * @brief TBD
+	 */
+	list<int> GetNext(int number);
+
+	/**
+	 * @brief TBD
+	 */
+	void GoToPacket(int number);
+
+	/**
+	 * @brief TBD
+	 */
+	int GetTotalPacket();
+
 private:
 	/**
 	 * @brief TBD
 	 */
-	int packetNumber;
+	int packet_number;
 
 	/**
 	 * @brief TBD
 	 */
 	int pid;
+
+	/**
+	 * @brief TBD
+	 */
+	string filename;
 };
 
 #endif /* DECODER_H_ */
