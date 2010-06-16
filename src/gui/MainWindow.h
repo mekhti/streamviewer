@@ -16,6 +16,8 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "../Decoder.h"
+
 #include <gtkmm.h>
 #include <libglademm.h>
 
@@ -47,10 +49,12 @@ private:
 		{
 			add(tmcNumber);
 			add(tmcPID);
+			add(tmcDesc);
 		}
 
 		Gtk::TreeModelColumn<unsigned int> tmcNumber;
 		Gtk::TreeModelColumn<unsigned int> tmcPID;
+		Gtk::TreeModelColumn<std::string> tmcDesc;
 	};
 
 	/**
@@ -67,6 +71,10 @@ private:
 	 * @brief The packet list tree view.
 	 */
 	Gtk::TreeView *tvwPacketList;
+
+	Gtk::ToolButton *btnOpenDialog;
+
+	Decoder decoder;
 };
 
 #endif // MAINWINDOW_H
