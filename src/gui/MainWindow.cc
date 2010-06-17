@@ -33,33 +33,9 @@ MainWindow::MainWindow(BaseObjectType* base_object, const Glib::RefPtr<Gnome::Gl
 	tvwPacketList->set_model(refLstPacketList);
 
 	/* Add the TreeView's view columns. */
-	tvwPacketList->append_column("Number", mclPacketList.tmcNumber);
+	tvwPacketList->append_column("Num", mclPacketList.tmcNumber);
 	tvwPacketList->append_column("PID", mclPacketList.tmcPID);
 	tvwPacketList->append_column("Description", mclPacketList.tmcDesc);
-
-	Gtk::TreeModel::Row row;
-	list<int>::iterator it;
-
-//	for (int i = 345; i < 375; i++)
-//	{
-//		row = *(refLstPacketList->append());
-//		row[mclPacketList.tmcNumber] = i;
-//		if ((i == 347) || (i == 357))
-//		{
-//			row[mclPacketList.tmcPID] = 4;
-//			row[mclPacketList.tmcDesc] = "ISO/IEC 13818-3 Audio";
-//		}
-//		else if (i == 355)
-//		{
-//			row[mclPacketList.tmcPID] = 10;
-//			row[mclPacketList.tmcDesc] = "ISO_639_language_descriptor";
-//		}
-//		else
-//		{
-//			row[mclPacketList.tmcPID] = 2;
-//			row[mclPacketList.tmcDesc] = "ITU-T Rec. H.262 | ISO/IEC 13818-2 Video | ISO/IEC 11172-2 constr. parameter video stream";
-//		}
-//	}
 }
 
 MainWindow::~MainWindow()
@@ -94,19 +70,19 @@ void MainWindow::on_btnOpen_clicked()
 	switch (result) {
 	case (Gtk::RESPONSE_OK): {
 
-		//Notice that this is a std::string, not a Glib::ustring.
-		std::string filename = dialog.get_filename();
-		std::cout << "File selected: " << filename << std::endl;
-		list<int> pid_list = decoder.GetNext(1);
+		decoder.SetFile(dialog.get_filename());
+		list<Packet> pid_list = decoder.GetNext(100);
 
 		Gtk::TreeModel::Row row;
-		list<int>::iterator it;
+		list<Packet>::iterator it;
+
 
 		for (it = pid_list.begin(); it != pid_list.end(); it++)
 		{
 			row = *(refLstPacketList->append());
-			row[mclPacketList.tmcNumber] = 5;
-			row[mclPacketList.tmcPID] = *it;
+			row[mclPacketList.tmcNumber] = it->num;
+			row[mclPacketList.tmcPID] = it->pid;
+			row[mclPacketList.tmcDesc] = decoder.GetPacketDescription(it->pid);
 		}
 
 		break;

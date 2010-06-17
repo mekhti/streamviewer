@@ -16,6 +16,8 @@
 #ifndef DECODER_H_
 #define DECODER_H_
 
+#include "global.h"
+
 #include <string>
 #include <list>
 
@@ -42,7 +44,7 @@ public:
 	/**
 	 * @brief TBD
 	 */
-	list<int> GetNext(int number);
+	list<Packet> GetNext(int number);
 
 	/**
 	 * @brief TBD
@@ -54,16 +56,12 @@ public:
 	 */
 	int GetTotalPacket();
 
-private:
 	/**
 	 * @brief TBD
 	 */
-	int packet_number;
+	std::string GetPacketDescription(int pid);
 
-	/**
-	 * @brief TBD
-	 */
-	int pid;
+private:
 
 	/**
 	 * @brief TBD

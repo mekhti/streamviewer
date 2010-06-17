@@ -30,4 +30,12 @@ extern std::string applicationPath;
  */
 extern Glib::RefPtr<Gnome::Glade::Xml> rptGlade;
 
+struct Packet_
+{
+	int num;
+	int pid;
+};
+
+typedef struct Packet_ Packet;
+
 #endif /* GLOBAL_H_ */
