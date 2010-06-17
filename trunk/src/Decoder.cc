@@ -14,6 +14,8 @@
  */
 
 #include "Decoder.h"
+
+#include <sstream>
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -33,36 +35,20 @@ Decoder::~Decoder()
 
 void Decoder::SetFile(string filename)
 {
-	filename = this->filename;
-
-//	string line;
-//	ifstream myfile("output1");
-//
-//	if (myfile.is_open())
-//	{
-//		while (!myfile.eof())
-//		{
-//			getline(myfile, line);
-//
-//			if (line.substr(0, 9) == "TS-Packet")
-//			{
-//				packetNumber = atoi(line.substr(11, 8).c_str());
-//			}
-//			else if (line.substr(0, 3) == "PID")
-//			{
-//				pid = atoi(line.substr(5, line.find_first_of('(')-6).c_str());
-//
-//				cout << "[" << packetNumber << "][" << pid << "]" << endl;
-//			}
-//		}
-//		myfile.close();
-//	}
-//	else cout << "Unable to open file";
+	this->filename = filename;
+	std::cout << "FN: " << filename << std::endl;
 }
 
-list<int> Decoder::GetNext(int number)
+list<Packet> Decoder::GetNext(int number)
 {
-	FILE *pipe = popen("dvbsnoop -s ts -tssubdecode -n 10 -if channel9hdtv_ac3.ts", "r");
+	std::string command_line;
+
+	std::stringstream number_ss;
+	number_ss << number;
+
+	command_line  = "dvbsnoop -s ts -ph 0 -if " + filename + " -N " + number_ss.str();
+
+	FILE *pipe = popen((char *)command_line.c_str(), "r");
 
 	char buffer[128];
 	char packet_number_str[10];
@@ -70,7 +56,8 @@ list<int> Decoder::GetNext(int number)
 	char c;
 	int counter = 0;
 
-	list<int> pid_list;
+	list<Packet> packet_list;
+	Packet packet;
 
 	if (pipe == NULL)
 	{
@@ -88,14 +75,14 @@ list<int> Decoder::GetNext(int number)
 			if (strncmp(buffer, "TS-Packet", 9) == 0)
 			{
 				strncpy((char *)packet_number_str, buffer + 11, 8);
-				packet_number = atoi((const char *)packet_number_str);
+				packet.num = atoi((const char *)packet_number_str);
 			}
 			else if (strncmp(buffer, "PID", 3) == 0)
 			{
 				strncpy((char *)pid_str, buffer + 5, 4);
-				pid = atoi((const char *)pid_str);
+				packet.pid = atoi((const char *)pid_str);
 
-				pid_list.push_back(pid);
+				packet_list.push_back(packet);
 			}
 
 			counter = 0;
@@ -109,7 +96,7 @@ list<int> Decoder::GetNext(int number)
 	/* Close pipe */
 	pclose(pipe);
 
-	return pid_list;
+	return packet_list;
 }
 
 void Decoder::GoToPacket(int number)
@@ -122,3 +109,40 @@ int Decoder::GetTotalPacket()
 	return 0;
 }
 
+std::string Decoder::GetPacketDescription(int pid)
+{
+	switch (pid)
+	{
+		case 0:
+			return "ISO 13818-1 Program Association Table (PAT)";
+			break;
+
+		case 1:
+			return "ISO 13818-1 Conditional Access Table (CAT)";
+			break;
+
+		case 16:
+			return "DVB Network Information Table (NIT), Stuffing Table (ST)";
+			break;
+
+		case 17:
+			return "DVB Service Description Table (SDT), Bouquet Association Table (BAT)";
+			break;
+
+		case 18:
+			return "DVB Event Information Table (EIT)";
+			break;
+
+		case 20:
+			return "DVB Time and Date Table (TDT), Time Offset Table (TOT)";
+			break;
+
+		case 8191:
+			return "Null Packet";
+			break;
+
+		default:
+			return "Unknow";
+			break;
+	}
+}

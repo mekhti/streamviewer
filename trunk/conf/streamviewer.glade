@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE glade-interface SYSTEM "glade-2.0.dtd">
-<!--Generated with glade3 3.4.5 on Wed Dec  2 22:58:56 2009 -->
+<!--Generated with glade3 3.4.5 on Wed Jun 16 22:47:10 2010 -->
 <glade-interface>
   <widget class="GtkWindow" id="winMain">
     <property name="title" translatable="yes">StreamViewer</property>
@@ -191,38 +191,18 @@
           </packing>
         </child>
         <child>
-          <widget class="GtkHPaned" id="pnlMain">
+          <widget class="GtkScrolledWindow" id="scwPackets">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
+            <property name="hscrollbar_policy">GTK_POLICY_NEVER</property>
             <child>
-              <widget class="GtkTreeView" id="tvwSelection">
-                <property name="width_request">150</property>
+              <widget class="GtkTreeView" id="tvwPacketList">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="headers_clickable">True</property>
+                <property name="rules_hint">True</property>
+                <property name="enable_grid_lines">GTK_TREE_VIEW_GRID_LINES_HORIZONTAL</property>
               </widget>
-              <packing>
-                <property name="resize">False</property>
-                <property name="shrink">True</property>
-              </packing>
-            </child>
-            <child>
-              <widget class="GtkScrolledWindow" id="scwPackets">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="hscrollbar_policy">GTK_POLICY_NEVER</property>
-                <child>
-                  <widget class="GtkTreeView" id="tvwPacketList">
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="headers_clickable">True</property>
-                  </widget>
-                </child>
-              </widget>
-              <packing>
-                <property name="resize">True</property>
-                <property name="shrink">True</property>
-              </packing>
             </child>
           </widget>
           <packing>
@@ -392,7 +372,7 @@ This General Public License does not permit incorporating your program into prop
     <property name="authors">Paulo Flabiano Smorigo</property>
     <property name="documenters">Paulo Flabiano Smorigo</property>
     <property name="artists">Paulo Flabiano Smorigo</property>
-    <property name="logo">../images/logo.png</property>
+    <property name="logo">logo.png</property>
     <property name="wrap_license">True</property>
     <child internal-child="vbox">
       <widget class="GtkVBox" id="boxDialog">
